@@ -1,0 +1,10 @@
+CREATE DATABASE matricula_db;
+
+USE matricula_db;
+
+CREATE TABLE alunos (
+    id INT PRIMARY KEY,
+    nome VARCHAR(100),
+    email VARCHAR(100),
+    matricula VARCHAR(20)
+);
