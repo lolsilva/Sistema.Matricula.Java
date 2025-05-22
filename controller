@@ -1,0 +1,23 @@
+* Classe MatriculaController
+
+package controller;
+
+import model.Aluno;
+import model.Turma;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class MatriculaController {
+    private Map<Aluno, List<Turma>> matriculas = new HashMap<>();
+
+    public void matricular(Aluno aluno, Turma turma) {
+        matriculas.computeIfAbsent(aluno, k -> new java.util.ArrayList<>()).add(turma);
+    }
+
+    public List<Turma> getTurmasMatriculadas(Aluno aluno) {
+        return matriculas.getOrDefault(aluno, new java.util.ArrayList<>());
+    }
+}
+
