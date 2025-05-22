@@ -1,0 +1,29 @@
+Classe mainApp
+
+package main;
+
+import controller.MatriculaController;
+import dao.AlunoDAO;
+import model.Aluno;
+import model.Turma;
+
+import java.util.List;
+
+public class App {
+    public static void main(String[] args) {
+        AlunoDAO alunoDAO = new AlunoDAO();
+
+        Aluno aluno = new Aluno(1, "João Silva", "joao@email.com", "2023001");
+        alunoDAO.inserir(aluno);
+
+        List<Aluno> lista = alunoDAO.listar();
+        lista.forEach(System.out::println);
+
+        Turma turma = new Turma(101, "POO com Java", "Prof. Carlos");
+        MatriculaController controller = new MatriculaController();
+        controller.matricular(aluno, turma);
+
+        System.out.println("Turmas do aluno " + aluno.getNome() + ":");
+        controller.getTurmasMatriculadas(aluno).forEach(System.out::println);
+    }
+}
